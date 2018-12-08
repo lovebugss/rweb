@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<head th:include="/new/head :: commonHeader('欢迎来到ITRJP.COM')">
+
+
+</head>
+<body>
+<header th:include="/new/topnav::nav">
+</header>
+<article>
+    <h1 class="t_nav"><span>您现在的位置是：首页 > 文章 >&nbsp;<span th:text="${article.articleTitle}"></span></span><a href="/" class="n1">网站首页</a><a href="/" class="n2">文章列表</a></h1>
+    <div class="infos" th:include="/new/content::content"></div>
+    <div class="sidebar" th:include="/new/aside::aside"></div>
+</article>
+<footer>
+    <p class="">©2017-2018 ITRJP.COM版权所有</p>
+    <a href="http://www.miibeian.gov.cn/" target="_blank" class="">冀ICP备17025801号-1</a>
+    </p>
+</footer>
+<script src="/js/nav.js"></script>
+<script src="/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    jQuery.noConflict();
+    jQuery(function() {
+        var elm = jQuery('#left_flow2');
+        var startPos = jQuery(elm).offset().top;
+        jQuery.event.add(window, "scroll", function() {
+            var p = jQuery(window).scrollTop();
+            jQuery(elm).css('position',((p) > startPos) ? 'fixed' : '');
+
+            jQuery(elm).css('top',((p) > startPos) ? '0' : '');
+        });
+    });
+</script>
+</body>
+</html>

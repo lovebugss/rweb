@@ -1,0 +1,67 @@
+<div id="articleList" th:fragment="list">
+    <div class="A-tab">
+        <div class="tab-nav">
+
+        </div>
+        <div class="tab-content">
+            <!-- 文章-->
+            <div th:each="article : ${pageList.dataList}" class="panel panel-default">
+                <div class="">
+                    <!-- 标题-->
+                    <a class="article_title" th:href="${'article/'+article.id}">
+                        <h3 th:text="${article.articleTitle}" th:data="${'article/'+article.id}"></h3>
+                    </a>
+                    <div class="article_bar ">
+                        <div class="artical_tag text-right">
+                            <a class="" th:text="${article.original}"></a>
+                            <a class=""><i class="glyphicon glyphicon-calendar" th:text="${'  '+article.date}"></i> </a>
+                            <a class="" th:href="${'article/user/'+article.createBy}"><i
+                                    class="glyphicon glyphicon-user"
+                                    th:text="${'  '+article.createBy}"></i></a>
+                            <a class="" th:href="${'article/tag/'+article.tags}"><i class="glyphicon glyphicon-tags"
+                                                                                    th:text="${'  '+article.tags}"></i></a>
+                            <a class="" th:href="${'article/tag/'+article.tags}"><i class="glyphicon glyphicon-eye-open"
+                                                                                    th:text="${'  '+article.readingVolume}"></i>人阅读</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body" style="">
+                    <p class="" th:utext="${article.description}">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="pagination pagination-lg" style="margin: 0px 0;">
+    <li th:class="${pageList.pageNumber==1}?'disabled' : ''"><a th:href="@{'/?pageNo=' + ${pageList.pageNumber-1}}">上一页</a></li>
+    <li th:if="${pageList.pageNumber-3 >=1}"><a th:href="@{'/?pageNo=' + ${pageList.pageNumber-3}}"
+    th:text="${pageList.pageNumber -3}">1</a></li>
+    <li th:if="${pageList.pageNumber-2 >=1}"><a th:href="@{'/?pageNo=' + ${pageList.pageNumber-2}}"
+    th:text="${pageList.pageNumber -2}">1</a></li>
+    <li th:if="${pageList.pageNumber-1 >=1}"><a th:href="@{'/?pageNo=' + ${pageList.pageNumber-1}}"
+    th:text="${pageList.pageNumber -1}">1</a></li>
+    <li class="active"><a href="javascript:;" th:text="${pageList.pageNumber}">1</a></li>
+    <li th:if="${pageList.pageNumber+1 <=pageList.pages}"><a th:href="@{'/?pageNo=' + ${pageList.pageNumber+1}}"
+    th:text="${pageList.pageNumber +1}">1</a></li>
+    <li th:if="${pageList.pageNumber+2 <=pageList.pages}"><a th:href="@{'/?pageNo=' + ${pageList.pageNumber+2}}"
+    th:text="${pageList.pageNumber +2}">1</a></li>
+    <li th:if="${pageList.pageNumber+3 <=pageList.pages}"><a th:href="@{'/?pageNo=' + ${pageList.pageNumber+3}}"
+    th:text="${pageList.pageNumber +3}">1</a></li>
+
+    <li th:class="${pageList.pageNumber==pageList.pages}?'disabled' : ''"><a th:href="@{'/?pageNo=' + ${pageList.pageNumber+1}}">下一页</a></li>
+    </ul>
+    <br>
+    <!--<link href
+    <!--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
+    <script type="text/javascript" th:src="@{/common/js/common.js}"></script>
+    <script type="text/javascript" th:src="@{/custom/js/blog/Article.js}"></script>
+
+    <script>
+
+        $(document).ready(function () {
+//        Article.initArticleList("articleList", 1);
+//        console.log(11111)
+        })
+    </script>
+</div>

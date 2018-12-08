@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itrjp.rweb.mapper.ArticleReadCountMapper">
+    <resultMap id="BaseResultMap" type="com.itrjp.rweb.model.ArticleReadCount">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="readCount" jdbcType="INTEGER" property="readCount"/>
+    </resultMap>
+    <update id="updateBath">
+        <foreach close=";" collection="list" index="index" item="record" open="" separator=";">
+            update article_read_count set read_count =#{record.readCount,jdbcType=INTEGER}
+            where id=#{record.id,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+</mapper>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<head th:include="/common/head :: commonHeader('欢迎来到ITRJP.COM')"></head>
+
+<body class="blog-body">
+<div class="">
+
+
+    <div class="common-topbar container-fluid" th:include="/common/top_nav :: navbar"></div><!-- /.container-fluid -->
+
+    <div class="home-main-warp container">
+        <div class="">
+
+            <!-- 横条-->
+            <div class="main-broadcast " th:include="/common/broadcast::broadcast"></div>
+            <!-- 主面板 -->
+            <div class="main-left col-xs-12 col-sm-6 col-md-8" th:include="/common/content::content"></div>
+            <!-- 副 -->
+            <div class="main-right col-xs-6 col-md-4" th:include="/common/aside::aside"></div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- 背景插件-->
+<script type="text/javascript" th:src="@{/custom/js/canvas-particle.js}"></script>
+<script type="text/javascript" th:src="@{/global/plugins/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/global/scripts/metronic.js}"></script>
+<script type="text/javascript" th:src="@{/common/js/common.js}"></script>
+<script type="text/javascript" th:src="@{/custom/js/index.js}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        ren_index.CanvasParticle();
+        ren_index.initTime("DateTime");
+        //初始化滚动公告
+//        setInterval(ren_index.initAutoScroll("scroll"),3000);
+//        ren_index.initAutoScroll("scroll");
+//        common.getPageData("article/list", null, "main");
+    });
+</script>
+<script>
+
+    function autoScroll(obj) {
+        $(obj).find(".list").animate({
+            marginTop: "-20px"
+        }, 500, function () {
+            $(this).css({marginTop: "0px"}).find("li:first").appendTo(this);
+        })
+    }
+    $(function () {
+        setInterval('autoScroll(".scroll")', 3000)
+    })
+</script>
+</body>
+</html>

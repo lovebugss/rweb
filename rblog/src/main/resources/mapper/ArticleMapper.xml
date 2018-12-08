@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itrjp.rweb.mapper.ArticleMapper">
+    <resultMap id="BaseResultMap" type="com.itrjp.rweb.model.Article">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="article_title" jdbcType="VARCHAR" property="articleTitle"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_by" jdbcType="VARCHAR" property="createBy"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_by" jdbcType="VARCHAR" property="updateBy"/>
+        <result column="active_flag" jdbcType="VARCHAR" property="activeFlag"/>
+        <result column="original" jdbcType="VARCHAR" property="original"/>
+        <result column="tags" jdbcType="VARCHAR" property="tags"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="img_url" jdbcType="VARCHAR" property="imgUrl"/>
+    </resultMap>
+    <select id="selectHot" resultMap="BaseResultMap">
+    SELECT
+  a.ID,
+  ACTIVE_FLAG,
+  CREATE_BY,
+  CREATE_TIME,
+  UPDATE_BY,
+  UPDATE_TIME,
+  original,
+  tags,
+  description,
+  article_title,
+  img_url ,
+  art.`read_count` AS "readCount"
+FROM
+  article a
+  LEFT JOIN
+  article_read_count art
+ON a.id = art.id
+ORDER BY art.read_count DESC
+LIMIT 5
+  </select>
+</mapper>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<head th:include="/common/head :: commonHeader('欢迎来到ITRJP.COM')"></head>
+<link rel="stylesheet" th:href="@{/editor/css/style.css}"/>
+<link rel="stylesheet" th:href="@{/editor/css/editormd.css}"/>
+<style></style>
+<body class="">
+
+<div th:include="/common/top_nav :: navbar"></div><!-- /.container-fluid -->
+
+<div class="">
+    <div th:include="/common/broadcast::broadcast" class=""></div>
+    <div class= "" style="margin-top: 20px">
+
+        <div class="">
+            <input type="text" id="txtTitle" class="" maxlength="100" placeholder="输入文章标题">
+            <button id="save" class="">发布</button>
+        </div>
+        <div class="">
+            <select type="" id="" class="" maxlength="100" >
+                <option>文章分类</option>
+                <option>java</option>
+                <option>spring</option>
+            </select>
+
+        </div>
+        <div id="editormd"  class=""  >
+                <textarea style="display:none;"></textarea>
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript" th:src="@{/custom/js/canvas-particle.js}"></script>
+<script type="text/javascript" th:src="@{/global/plugins/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/global/scripts/metronic.js}"></script>
+<script type="text/javascript" th:src="@{/common/js/common.js}"></script>
+<script type="text/javascript" th:src="@{/custom/js/index.js}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        ren_index.CanvasParticle();
+        ren_index.initTime("DateTime");
+        //初始化编辑器
+        ren_index.initEditorMd("editormd");
+        ren_index.initSaveBtn("save");
+        //初始化滚动公告
+//        setInterval(ren_index.initAutoScroll("scroll"),3000);
+//        ren_index.initAutoScroll("scroll");
+//        common.getPageData("article/list", null, "main");
+    });
+</script>
+<script>
+    function autoScroll(obj) {
+        $(obj).find(".list").animate({
+            marginTop: "-20px"
+        }, 500, function () {
+            $(this).css({marginTop: "0px"}).find("li:first").appendTo(this);
+        })
+    }
+    $(function () {
+        setInterval('autoScroll(".scroll")', 3000)
+    })
+</script>
+<script th:src="@{/editor/js/editormd.js}"></script>
+</body>
+</html>

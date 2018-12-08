@@ -1,0 +1,49 @@
+<div th:fragment="content">
+    <!-- 文章-->
+    <div class="">
+        <!--导航-->
+        <div class="">
+                <span><i class=""></i>
+                    您现在的位置是：<a href="/">首页</a> &gt; 文章
+                </span>
+        </div>
+
+        <!-- 标题-->
+        <a class="" th:text="${article.articleTitle}"></a>
+        <div class="">
+            <div class="">
+                <span class="" th:text="${article.original}"></span>
+                <span class=""><i class=" " th:text="${'  '+article.date}"></i> </span>
+                <a class=""><i class=" " th:text="${'  '+article.createBy}"></i></a>
+                <a class=""><i class=" " th:text="${'  '+article.tags}"></i></a>
+                <a class="" th:href="${'article/tag/'+article.tags}"><i class=""
+                                                                        th:text="${'  '+article.readingVolume}"></i>人阅读</a>
+            </div>
+        </div>
+        <div class="">
+            <div style="" th:utext="${article.content}">
+                <!--<div id="test-editormd-view">-->
+                <!--<textarea style="display:none;" name="test-editormd-markdown-doc" th:utext="${article.content}"></textarea>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/global/scripts/metronic.js}"></script>
+<script type="text/javascript" th:src="@{/common/js/common.js}"></script>
+<script type="text/javascript" th:src="@{/custom/js/blog/Article.js}"></script>
+<!--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+//        Article.initArticleList("articleList", 1);
+        console.log(11111)
+    })
+
+</script>

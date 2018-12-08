@@ -1,0 +1,48 @@
+<div th:fragment="aside">
+
+    <div class="about">
+        <div class="avatar"> <img src="/images/info.jpg" alt=""> </div>
+        <p class="abname"></p>
+        <p class="abposition">JAVA开发</p>
+        <div class="abtext">不忘初心，继续前行。 </div>
+    </div>
+    <div class="search">
+        <form action="/search" method="get" name="searchform" id="searchform">
+            <input name="k" id="keyboard" class="input_text" value="请输入关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
+            <input name="show" value="title" type="hidden">
+            <input name="p" value="1" type="hidden">
+            <input name="r" value="10" type="hidden">
+            <input name="Submit" class="input_submit" value="搜索" type="submit">
+        </form>
+    </div>
+    <div class="cloud">
+        <h2 class="hometitle">分类标签</h2>
+        <ul>
+            <a href="/">JAVA</a> <a href="/">Spring</a> <a href="/">html</a>
+        </ul>
+    </div>
+    <div class="paihang">
+        <h2 class="hometitle">热门文章</h2>
+        <ul>
+            <li th:each="article :${hotList}"><b><a th:href="${article.id}" th:text="${article.articleTitle}" target="_blank"></a></b>
+                <p><i><img th:src="${article.imgUrl}"></i><div class="text_desc" th:utext="${article.description}"></div></p>
+            </li>
+
+        </ul>
+    </div>
+    <div class="links">
+        <h2 class="hometitle">联系我</h2>
+        <ul>
+            <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=979668507&amp;site=qq&amp;menu=yes" title="GitHub" target="_blank">QQ：979668507</a>
+            <a href="mailto:r979668507@gmail.com" target="_blank">邮箱：r979668507@gmail.com</a>
+            <a href="https://github.com/renjianpeng" target="_blank">GitHub：https://github.com/renjianpeng</a>
+            <a href="https://gitee.com/lovebugss" target="_blank">Gitee：https://gitee.com/lovebugss</a>
+        </ul>
+    </div>
+    <!--<div class="weixin">-->
+        <!--<h2 class="hometitle">官方微信</h2>-->
+        <!--<ul>-->
+            <!--<img src="images/wx.jpg">-->
+        <!--</ul>-->
+    <!--</div>-->
+</div>
