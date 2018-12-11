@@ -6,17 +6,17 @@
 <!--[if !IE]><!-->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!--<![endif]-->
-<head th:include="/new/head :: commonHeader('欢迎来到ITRJP.COM')">
+<head th:include="/common/head :: commonHeader('欢迎来到ITRJP.COM')">
 
 
 </head>
 <body>
-<header th:include="/new/topnav::nav">
+<header th:include="/common/topnav::nav">
 </header>
 <article>
     <h1 class="t_nav"><span>您现在的位置是：首页 > 文章 >&nbsp;<span th:text="${article.articleTitle}"></span></span><a href="/" class="n1">网站首页</a><a href="/" class="n2">文章列表</a></h1>
-    <div class="infos" th:include="/new/content::content"></div>
-    <div class="sidebar" th:include="/new/aside::aside"></div>
+    <div class="infos" th:include="/common/content::content"></div>
+    <div class="sidebar" th:include="/common/aside::aside"></div>
 </article>
 <footer>
     <p class="">©2017-2018 ITRJP.COM版权所有</p>

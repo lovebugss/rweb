@@ -21,6 +21,5 @@ public class Email {
     private boolean isAttachment;  //是否有附件
 
     public Email() {
-
     }
 }

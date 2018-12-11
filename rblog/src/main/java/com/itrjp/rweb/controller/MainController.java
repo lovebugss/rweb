@@ -34,7 +34,7 @@ public class MainController {
     @RequestMapping({"/","index"})
     public ModelAndView index(Integer pageNo, Integer pageSize) throws Exception {
         ModelAndView mov = new ModelAndView();
-        mov.setViewName("indexn");
+        mov.setViewName("index");
         PagedResult<ArticleVo> pageList = this.articleService.findPageList(pageNo, pageSize, null);
         mov.addObject("pageList", pageList);
         List<? extends Article>  hotList = this.articleService.findHotList();

@@ -7,52 +7,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!--<![endif]-->
 <head th:include="/common/head :: commonHeader('欢迎来到ITRJP.COM')"></head>
-
-<body class="blog-body">
-<div class="">
-
-
-<div class="common-topbar container-fluid" th:include="/common/top_nav :: navbar"></div><!-- /.container-fluid -->
-
-<div class="home-main-warp container">
-    <div class="">
-
-    <!-- 横条-->
-    <div class="main-broadcast " th:include="/common/broadcast::broadcast"></div>
-    <!-- 主面板 -->
-    <div class="main-left col-xs-12 col-sm-6 col-md-8" th:include="/common/list::list"></div>
-    <!-- 副 -->
-    <div class="main-right col-xs-6 col-md-4" th:include="/common/aside::aside"></div>
-    </div>
+<body>
+<header th:include="/common/topnav::nav">
+</header>
+<!--<div class="picshow" th:include="/common/banner::banner">-->
 </div>
-</div>
-</div>
-<!-- 背景插件-->
-<script type="text/javascript" th:src="@{/custom/js/canvas-particle.js}"></script>
-<script type="text/javascript" th:src="@{/common/js/common.js}"></script>
-<script type="text/javascript" th:src="@{/custom/js/index.js}"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        ren_index.CanvasParticle();
-        ren_index.initTime("DateTime");
-        //初始化滚动公告
-//        setInterval(ren_index.initAutoScroll("scroll"),3000);
-//        ren_index.initAutoScroll("scroll");
-//        common.getPageData("article/list", null, "main");
-    });
-</script>
-<script>
-//    function autoScroll(obj) {
-//        $(obj).find(".list").animate({
-//            marginTop: "-20px"
-//        }, 500, function () {
-//            $(this).css({marginTop: "0px"}).find("li:first").appendTo(this);
-//        })
-//    }
-//    $(function () {
-//        setInterval('autoScroll(".scroll")', 3000)
-//    })
-</script>
+<article>
+    <div class="blogs" th:include="/common/list::list"></div>
+    <div class="sidebar" th:include="/common/aside::aside"></div>
+</article>
+<div class="blank"></div>
+<footer>
+    <p class="">©2017-2018 ITRJP.COM版权所有</p>
+    <a href="http://www.miibeian.gov.cn/" target="_blank" class="">冀ICP备17025801号-1</a>
+    </p>
+</footer>
+<script src="js/nav.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>L2Dwidget.init({
+    "pluginRootPath": "live2dw/",
+    "pluginJsPath": "lib/",
+    "pluginModelPath": "assets/",
+    "tagMode": false,
+    "debug": false,
+    "model": {"jsonPath": "/live2dw/assets/wanko.model.json"},
+    "display": {"position": "left", "width": 125, "height": 250, "hOffset": 0, "vOffset": -50},
+    "mobile": {"show": true, "scale": 0.5},
+    "log": false
+});</script>
 </body>
 </html>
