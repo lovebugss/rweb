@@ -12,7 +12,7 @@
         <property name="endingDelimiter" value="`"/>
 
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="com.itrjp.rweb.base.BaseMapper"/>
+            <property name="mappers" value="com.itrjp.backend.base.BaseMapper"/>
         </plugin>
         <!-- 连接属性-->
         <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
@@ -21,11 +21,11 @@
                         password="${spring.datasource.password}">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="com.itrjp.rweb.model" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="com.itrjp.backend.model" targetProject="src/main/java"/>
 
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
 
-        <javaClientGenerator targetPackage="com.itrjp.rweb.mapper" targetProject="src/main/java"
+        <javaClientGenerator targetPackage="com.itrjp.backend.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
         <table tableName="article">

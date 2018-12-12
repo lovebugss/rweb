@@ -20,17 +20,17 @@ public class MenuServiceImpl implements MenuService {
         List<Menu> list1 = new ArrayList<>();
         List<Menu> list2 = new ArrayList<>();
 
-        Menu menu11 = new Menu("10061", "概览", "desk$/index", "");
-        Menu menu12 = new Menu("10062", "图标", "echarts", "");
-        Menu menu13 = new Menu("10063", "编辑器", "editor", "");
-        Menu menu14 = new Menu("10064", "聊天室", "chat", "");
+        Menu menu11 = new Menu("10061", "概览", "desk$/index", "",null);
+        Menu menu12 = new Menu("10062", "图标", "echarts", "",null);
+        Menu menu13 = new Menu("10063", "编辑器", "editor", "",null);
+        Menu menu14 = new Menu("10064", "聊天室", "chat", "",null);
         list1.add(menu11);
         list1.add(menu12);
         list1.add(menu13);
         list1.add(menu14);
-        Menu menu21 = new Menu("10161", "用户管理", "set$/userManage", "");
-        Menu menu22 = new Menu("10162", "角色管理", "set$/roleManage", "");
-        Menu menu23 = new Menu("10163", "权限管理", "set$/moduleManage", "");
+        Menu menu21 = new Menu("10161", "用户管理", "set$/userManage", "",null);
+        Menu menu22 = new Menu("10162", "角色管理", "set$/roleManage", "",null);
+        Menu menu23 = new Menu("10163", "权限管理", "set$/moduleManage", "",null);
         list2.add(menu21);
         list2.add(menu22);
         list2.add(menu23);
