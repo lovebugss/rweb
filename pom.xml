@@ -47,6 +47,7 @@
         <module>rweb-client</module>
         <module>rweb-erueka-service</module>
         <module>rweb-backend</module>
+        <module>rblog-forntend</module>
     </modules>
     <dependencyManagement>
 

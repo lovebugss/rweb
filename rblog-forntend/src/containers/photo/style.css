@@ -1,0 +1,11 @@
+.image-element-class {
+    /*background-color: red;*/
+    margin: 12px;
+
+}
+.card{
+    border-radius:12px;
+}
+.card img{
+    border-radius:12px 12px 0 0;
+}
