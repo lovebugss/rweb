@@ -1,0 +1,11 @@
+.logo {
+    height: 64px;
+    background: #2b254c;
+    padding: 10px;
+}
+.logo .text {
+    font-size: 18px;
+}
+.logo img {
+    width: 60px;
+}

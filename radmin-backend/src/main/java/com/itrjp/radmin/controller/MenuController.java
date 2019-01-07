@@ -1,30 +1,32 @@
-package com.itrjp.radmin.controller;
+package com.itrjp.radmin.controller;/**
+ * Created by renjp on 2019/1/7.
+ */
 
 import com.itrjp.common.result.Result;
+import com.itrjp.radmin.bean.Menu;
 import com.itrjp.radmin.service.MenuService;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
+import java.util.List;
 
 /**
- * Created by ren on 2018/11/4.
+ * @author renjp
+ * @Date 2019/1/7 15:44
+ * @Version 1.0
  */
-@RestController()
-@RequestMapping("menu")
+@RestController
+@RequestMapping("api/menu")
 public class MenuController {
 
-    @Resource
+    @Autowired
     private MenuService menuService;
-    /**
-     *
-     * @return
-     */
-    @PostMapping("list")
-    public Result getUserMenu(){
-//        HashMap<String, List<Menu>> map = new HashMap<>();
-//        map.put("list", menuService.getAll());
-        return Result.success(menuService.getAll());
+
+    @GetMapping("list")
+    public Result<List<Menu>> getMenus() {
+
+        return Result.success(this.menuService.getAll());
     }
 }

@@ -1,11 +1,15 @@
 package com.itrjp.radmin.service.impl;
 
 import com.itrjp.radmin.bean.Menu;
+import com.itrjp.radmin.dao.MenuMapper;
 import com.itrjp.radmin.service.MenuService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by ren on 2018/11/4.
@@ -13,33 +17,49 @@ import java.util.List;
 
 @Service
 public class MenuServiceImpl implements MenuService {
+    @Autowired
+    private MenuMapper menuMapper;
+
     @Override
     public List<Menu> getAll() {
+        List<Menu> menus = menuMapper.selectAll();
 
-        List<Menu> list = new ArrayList<>();
-        List<Menu> list1 = new ArrayList<>();
-        List<Menu> list2 = new ArrayList<>();
+        //子菜单
+        List<Menu> children = menus.stream()
+                .filter((menu) -> menu.getActiveFlag() == 1 && menu.getParentId() != null)
+                .collect(Collectors.toList());
 
-        Menu menu11 = new Menu("10061", "概览", "desk$/index", "",null);
-        Menu menu12 = new Menu("10062", "图标", "echarts", "",null);
-        Menu menu13 = new Menu("10063", "编辑器", "editor", "",null);
-        Menu menu14 = new Menu("10064", "聊天室", "chat", "",null);
-        list1.add(menu11);
-        list1.add(menu12);
-        list1.add(menu13);
-        list1.add(menu14);
-        Menu menu21 = new Menu("10161", "用户管理", "set$/userManage", "",null);
-        Menu menu22 = new Menu("10162", "角色管理", "set$/roleManage", "",null);
-        Menu menu23 = new Menu("10163", "权限管理", "set$/moduleManage", "",null);
-        list2.add(menu21);
-        list2.add(menu22);
-        list2.add(menu23);
+        List<Menu> collect = menus.stream()
+                .filter((menu) -> menu.getActiveFlag() == 1 && menu.getParentId() == null)
+                .filter(menu -> {
+
+                    return true;
+                })
+                .sorted(Comparator.comparing(Menu::getOrderNum))
+
+                .collect(Collectors.toList());
 
 
-        Menu menu = new Menu("10060", "工作台", "desk$", "home", list1);
-        Menu menu2 = new Menu("10062", "设置中心", "set$", "set", list2);
-        list.add(menu);
-        list.add(menu2);
-        return list;
+        for (Menu menu : collect) {
+            for (Menu child : children) {
+
+                if (menu.getId().equals(child.getParentId())) {
+                    List<Menu> childrenList = menu.getChildren();
+                    if (childrenList == null) {
+                        childrenList = new ArrayList<>();
+                    }
+                    childrenList.add(child);
+                    menu.setChildren(childrenList);
+                }
+            }
+        }
+
+
+        return collect;
+    }
+
+
+    private void setChildren() {
+
     }
 }
