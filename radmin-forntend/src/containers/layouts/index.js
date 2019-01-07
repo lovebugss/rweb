@@ -22,7 +22,10 @@ class Layouts extends React.Component {
     constructor(props) {
         super(props);
     }
-
+    componentDidMount(){
+        debugger
+        this.props.getMenuData();
+    }
 
     render() {
         const {children,collapsed,handleMenuCollapse} = this.props;
@@ -54,13 +57,17 @@ class Layouts extends React.Component {
 }
 
 function mapStateToProps(state) {
+    debugger
     return {
-        collapsed: state.global.isCollapsed
+        collapsed: state.global.isCollapsed,
+        menuData:state.global.menuData
     }
 }
 function mapDispatchToProps(dispatch) {
+
     return {
-        handleMenuCollapse: bindActionCreators(actions.menu_collapse,dispatch)
+        handleMenuCollapse: bindActionCreators(actions.menu_collapse,dispatch),
+        getMenuData:bindActionCreators(actions.get_menus,dispatch)
     }
 }
 

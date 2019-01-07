@@ -12,7 +12,8 @@ const initialState = {
     msg: {
         code: 1,
         content: ''
-    }
+    },
+    menuData: []
 };
 // Action Types
 export const actionsTypes = {
@@ -24,6 +25,8 @@ export const actionsTypes = {
     SET_MESSAGE: "SET_MESSAGE",
     USER_AUTH: "USER_AUTH",
     MENU_COLLAPSE: 'MENU_COLLAPSE',
+    INIT_MENU: "INIT_MENU",
+    GET_MENU: "GET_MENU",
 };
 
 // Action Creators
@@ -41,10 +44,23 @@ export const actions = {
             key
         }
     },
-    menu_collapse:(collapse)=>{
-        return{
-            type:actionsTypes.MENU_COLLAPSE,
+    menu_collapse: (collapse) => {
+        return {
+            type: actionsTypes.MENU_COLLAPSE,
             collapse
+        }
+    },
+    get_menus: () => {
+        return {
+            type: actionsTypes.GET_MENU,
+
+        }
+    },
+    init_menus: (menuData) => {
+        return {
+
+            type: actionsTypes.INIT_MENU,
+            menuData
         }
     }
 };
@@ -76,6 +92,14 @@ export function reducer(state = initialState, action) {
         case actionsTypes.MENU_COLLAPSE:
             return {
                 ...state, isCollapsed: !state.isCollapsed
+            }
+        case actionsTypes.GET_MENU:
+            return {
+                ...state,
+            }
+        case actionsTypes.INIT_MENU:
+            return {
+                ...state, menuData: state.menuData
             }
         default:
             return state
