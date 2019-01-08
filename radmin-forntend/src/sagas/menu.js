@@ -2,10 +2,10 @@
  * Created by renjp on 2019/1/4.
  */
 import {call, put, takeEvery, takeLatest} from 'redux-saga/effects';
-import {actionsTypes, actions} from '../reducers/index';
 import {get} from '../util/fetch';
-import {actionsTypes as IndexActionTypes} from '../reducers'
-import {showLoading, hideLoading} from 'react-redux-loading-bar'
+import {actionsTypes as IndexActionTypes} from '../reducers';
+import {showLoading, hideLoading} from 'react-redux-loading-bar';
+import {actions,actionsTypes} from '../reducers/menu'
 
 
 const {init_menus} = actions;
@@ -16,10 +16,8 @@ function* getMenus() {
 
 
     try {
-        debugger
         let res = yield get("http://localhost:8081/api/menu/list");
-        debugger
-        yield put(init_menus(Object.assign({},res.data)));
+        yield put(init_menus(res.data));
 
     } catch (Execption) {
 

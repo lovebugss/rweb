@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Header from '../../components/Header';
 import SiderMenu from '../../components/SiderMenu';
-import {actions} from '../../reducers/index'
+import {actions} from '../../reducers/menu'
 
 import {
     Layout, Menu, Breadcrumb, Icon,
@@ -22,13 +22,9 @@ class Layouts extends React.Component {
     constructor(props) {
         super(props);
     }
-    componentDidMount(){
-        debugger
-        this.props.getMenuData();
-    }
 
     render() {
-        const {children,collapsed,handleMenuCollapse} = this.props;
+        const {children,collapsed,handleMenuCollapse,} = this.props;
         return (
             <div className="layout-container">
                 <Layout>
@@ -57,17 +53,13 @@ class Layouts extends React.Component {
 }
 
 function mapStateToProps(state) {
-    debugger
     return {
-        collapsed: state.global.isCollapsed,
-        menuData:state.global.menuData
+        collapsed: state.menu.isCollapsed,
     }
 }
 function mapDispatchToProps(dispatch) {
-
     return {
         handleMenuCollapse: bindActionCreators(actions.menu_collapse,dispatch),
-        getMenuData:bindActionCreators(actions.get_menus,dispatch)
     }
 }
 

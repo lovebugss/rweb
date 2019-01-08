@@ -22,6 +22,10 @@ function HeaderView(props) {
                 type={props.collapsed ? 'menu-unfold' : 'menu-fold'}
                 onClick={props.handleMenuCollapse}
             />
+            <div>
+
+            </div>
+
         </Header>
     );
 }

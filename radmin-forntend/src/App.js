@@ -5,7 +5,11 @@ import {connect} from 'react-redux';
 import Loading from './components/load';
 import Home from './containers/home';
 import Login from './containers/login';
-import 'antd/dist/antd.css'
+import Layouts from './containers/layouts';
+
+
+import 'antd/dist/antd.css';
+
 
 class App extends Component {
 
@@ -16,8 +20,12 @@ class App extends Component {
             <Router>
                 <div>
                     <Switch>
-                        <Route exact path="/" component={Home}/>
-                        <Route path="/login" component={Login}/>
+
+                            <Route path="/login" component={Login}/>
+                        <Route  component={Home}/>
+                            {/*<Route path="/login" component={Login}/>*/}
+                            {/*<Route path="/login" component={Login}/>*/}
+
                     </Switch>
                     {isFetching && <Loading/>}
 

@@ -3,17 +3,15 @@
  */
 import {combineReducers} from 'redux';
 import {loadingBarReducer} from 'react-redux-loading-bar';
-import {connectRouter} from 'connected-react-router'
+import {connectRouter} from 'connected-react-router';
+import {reducer as menuReducer} from './menu'
 
 const initialState = {
     isFetching: false,
-    isCollapsed: false,
-    // key:'home',
     msg: {
         code: 1,
         content: ''
     },
-    menuData: []
 };
 // Action Types
 export const actionsTypes = {
@@ -24,9 +22,6 @@ export const actionsTypes = {
     RESPONSE_USER_INFO: "RESPONSE_USER_INFO",
     SET_MESSAGE: "SET_MESSAGE",
     USER_AUTH: "USER_AUTH",
-    MENU_COLLAPSE: 'MENU_COLLAPSE',
-    INIT_MENU: "INIT_MENU",
-    GET_MENU: "GET_MENU",
 };
 
 // Action Creators
@@ -42,25 +37,6 @@ export const actions = {
         return {
             type: actionsTypes.CLICK_BTN,
             key
-        }
-    },
-    menu_collapse: (collapse) => {
-        return {
-            type: actionsTypes.MENU_COLLAPSE,
-            collapse
-        }
-    },
-    get_menus: () => {
-        return {
-            type: actionsTypes.GET_MENU,
-
-        }
-    },
-    init_menus: (menuData) => {
-        return {
-
-            type: actionsTypes.INIT_MENU,
-            menuData
         }
     }
 };
@@ -85,22 +61,6 @@ export function reducer(state = initialState, action) {
                     content: action.msgContent
                 }
             };
-        case 'CLICK_HEAD':
-            return {
-                ...state, key: action.key
-            };
-        case actionsTypes.MENU_COLLAPSE:
-            return {
-                ...state, isCollapsed: !state.isCollapsed
-            }
-        case actionsTypes.GET_MENU:
-            return {
-                ...state,
-            }
-        case actionsTypes.INIT_MENU:
-            return {
-                ...state, menuData: state.menuData
-            }
         default:
             return state
     }
@@ -109,6 +69,7 @@ export function reducer(state = initialState, action) {
 const rootReducer = (history) => combineReducers({
     router: connectRouter(history),
     global: reducer,
+    menu: menuReducer,
     loadingBar: loadingBarReducer,
 });
 

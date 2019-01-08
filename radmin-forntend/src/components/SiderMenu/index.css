@@ -2,10 +2,17 @@
     height: 64px;
     background: #2b254c;
     padding: 10px;
+    overflow: hidden;
 }
 .logo .text {
     font-size: 18px;
 }
 .logo img {
     width: 60px;
+
+}
+
+.icon {
+    width: 14px;
+    margin-right: 10px;
 }
