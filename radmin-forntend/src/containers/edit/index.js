@@ -1,11 +1,9 @@
 /**
  * Created by renjp on 2019/1/8.
  */
-import React from 'react';
-import {
-    Layout, Breadcrumb, Icon,Form,
-} from 'antd';
-import WrappedDemo from './EditForm'
+import React from "react";
+import {Breadcrumb, Form, Icon, Layout} from "antd";
+import Demo from "../../components/markdown/demo";
 
 const {Content,} = Layout;
 
@@ -27,8 +25,8 @@ class Edit extends React.Component {
                         background: '#fff', padding: 24, margin: 0, minHeight: 280,
                     }}
                     >
-                       <WrappedDemo/>
-
+                        {/*<WrappedDemo/>*/}
+                        <Demo/>
                     </Content>
                 </Layout>
             </div>
