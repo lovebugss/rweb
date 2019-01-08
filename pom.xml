@@ -46,6 +46,9 @@
         <module>rweb-web</module>
         <module>rweb-client</module>
         <module>rweb-erueka-service</module>
+        <module>rweb-erueka-discovery</module>
+        <module>rweb-config-service</module>
+        <module>rweb-solr</module>
         <module>rweb-backend</module>
         <module>rblog-forntend</module>
     </modules>
