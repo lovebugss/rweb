@@ -6,11 +6,15 @@ import ReactMarkdown from 'react-markdown';
 import {
     Form, Select, InputNumber, Switch, Radio,
     Slider, Button, Upload, Icon, Rate, Checkbox,
-    Row, Col,Input,
+    Row, Col, Input,
 } from 'antd';
+import SimpleMDE from 'simplemde'
+import marked from 'marked'
+import highlight from 'highlight.js'
+import 'simplemde/dist/simplemde.min.css'
 
-const { Option } = Select;
-const { TextArea } = Input;
+const {Option} = Select;
+const {TextArea} = Input;
 
 class Demo extends React.Component {
     handleSubmit = (e) => {
@@ -18,8 +22,32 @@ class Demo extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                console.log(this.smde.value())
             }
         });
+    }
+
+    componentDidMount() {
+        this.smde = new SimpleMDE({
+            element: document.getElementById('editor').childElementCount,
+            autofocus: true,
+            autosave: true,
+            previewRender: function (plainText) {
+                return marked(plainText, {
+                    renderer: new marked.Renderer(),
+                    gfm: true,
+                    pedantic: false,
+                    sanitize: false,
+                    tables: true,
+                    breaks: true,
+                    smartLists: true,
+                    smartypants: true,
+                    highlight: function (code) {
+                        return highlight.highlightAuto(code).value;
+                    }
+                });
+            },
+        })
     }
 
     normFile = (e) => {
@@ -31,10 +59,10 @@ class Demo extends React.Component {
     }
 
     render() {
-        const { getFieldDecorator } = this.props.form;
+        const {getFieldDecorator} = this.props.form;
         const formItemLayout = {
-            labelCol: { span: 6 },
-            wrapperCol: { span: 14 },
+            labelCol: {span: 6},
+            wrapperCol: {span: 14},
         };
         return (
             <Form onSubmit={this.handleSubmit}>
@@ -42,7 +70,13 @@ class Demo extends React.Component {
                     {...formItemLayout}
                     label="文章标题"
                 >
-                    <Input placeholder="文章标题"/>
+                    {getFieldDecorator('title', {
+                        rules: [{required: true, message: '请输入本文章标题'}],
+                    })(
+                        <Input placeholder="文章标题"/>
+                    )}
+
+
                 </Form.Item>
                 <Form.Item
                     {...formItemLayout}
@@ -51,7 +85,7 @@ class Demo extends React.Component {
                 >
                     {getFieldDecorator('select', {
                         rules: [
-                            { required: true, message: '请选择一个文章分类' },
+                            {required: true, message: '请选择一个文章分类'},
                         ],
                     })(
                         <Select placeholder="请选择文章分类">
@@ -72,27 +106,32 @@ class Demo extends React.Component {
                     })(
                         <Upload name="logo" action="/upload.do" listType="picture">
                             <Button>
-                                <Icon type="upload" /> Click to upload
+                                <Icon type="upload"/> Click to upload
                             </Button>
                         </Upload>
                     )}
                 </Form.Item>
                 <Form.Item
                     {...formItemLayout}
-                    label="描述"
-                >
-                    <TextArea></TextArea>
-                </Form.Item>
-
-                <Form.Item
-                    {...formItemLayout}
                     label="正文"
                 >
-                    <ReactMarkdown></ReactMarkdown>
+                    {/*{getFieldDecorator('content', {*/}
+                         {/*// rules: [{required: true, message: '请输入内容'}],*/}
+                     {/*// })(*/}
+                        <textarea id="editor"></textarea>
+                    {/*)}*/}
+
                 </Form.Item>
+                {/*<Form.Item*/}
+                {/*{...formItemLayout}*/}
+                {/*label="描述"*/}
+                {/*>*/}
+                {/*<TextArea/>*/}
+                {/*</Form.Item>*/}
+
 
                 <Form.Item
-                    wrapperCol={{ span: 12, offset: 6 }}
+                    wrapperCol={{span: 12, offset: 6}}
                 >
                     <Button type="primary" htmlType="submit">发布</Button>
                 </Form.Item>
@@ -101,6 +140,6 @@ class Demo extends React.Component {
     }
 }
 
-const WrappedDemo = Form.create({ name: 'validate_other' })(Demo);
+const WrappedDemo = Form.create({name: 'validate_other'})(Demo);
 
 export default WrappedDemo;

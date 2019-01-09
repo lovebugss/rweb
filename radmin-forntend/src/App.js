@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import {Layout} from 'antd';
 import {connect} from 'react-redux';
 import Loading from './components/load';
-import Home from './containers/home';
+import Index from './containers/index';
 import Login from './containers/login';
 import Layouts from './containers/layouts';
 
@@ -11,7 +11,18 @@ import Layouts from './containers/layouts';
 import 'antd/dist/antd.css';
 
 
+// 登录验证
+function requireAuth(Layout, props) {
+    debugger
+    if (false) { // 未登录
+        return <Redirect to="/login"/>;
+    } else {
+        return <Layout  />
+    }
+}
+
 class App extends Component {
+
 
     render() {
         let {isFetching} = this.props;
@@ -21,10 +32,9 @@ class App extends Component {
                 <div>
                     <Switch>
 
-                            <Route path="/login" component={Login}/>
-                        <Route  component={Home}/>
-                            {/*<Route path="/login" component={Login}/>*/}
-                            {/*<Route path="/login" component={Login}/>*/}
+                        <Route path="/login" component={Login}/>
+                        {/*<Route  component={props => requireAuth(Index, props)}/>*/}
+                        <Route  component={Index}/>
 
                     </Switch>
                     {isFetching && <Loading/>}

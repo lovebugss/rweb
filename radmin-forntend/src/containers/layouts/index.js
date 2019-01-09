@@ -6,7 +6,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Header from '../../components/Header';
 import SiderMenu from '../../components/SiderMenu';
-import {actions} from '../../reducers/menu'
+import {actions} from '../../reducers/menu';
+import Footer from '../../components/Footer'
 
 import {
     Layout, Menu, Breadcrumb, Icon,
@@ -14,7 +15,7 @@ import {
 import './index.css'
 
 const {SubMenu} = Menu;
-const {Content, Sider, Footer} = Layout;
+const {Content, Sider} = Layout;
 
 
 class Layouts extends React.Component {
@@ -41,9 +42,7 @@ class Layouts extends React.Component {
                             <Content overlay="">
                                 {children}
                             </Content>
-                            <Footer>
-                                aa
-                            </Footer>
+                            <Footer/>
                         </Layout>
                     </Layout>
                 </Layout>

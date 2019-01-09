@@ -10,13 +10,7 @@ import Analysis from '../dashboard/analysis'
 export default function () {
     return(
         <div>
-            <Layouts>
-                <Switch>
-                    <Route path="/edit" component={Edit}/>
-                    <Route path="/dashboard/analysis" component={Analysis}/>
 
-                </Switch>
-            </Layouts>
         </div>
     )
 }
