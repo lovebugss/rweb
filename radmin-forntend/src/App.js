@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import {Layout} from 'antd';
 import {connect} from 'react-redux';
-import Loading from './components/load';
+import {actions} from './reducers/app';
+import {bindActionCreators} from 'redux';
 import Index from './containers/index';
 import Login from './containers/login';
+import Loading from './components/load';
 import Layouts from './containers/layouts';
+import ModalDialog from './components/ModalDialog'
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 
 
 import 'antd/dist/antd.css';
@@ -25,7 +28,14 @@ class App extends Component {
 
 
     render() {
-        let {isFetching} = this.props;
+        const {isFetching,msg} = this.props;
+        const errorDialog = msg.code != 0 && (
+                <ModalDialog
+                    msg={this.props.msg}
+                    onClose={this.props.clearMsg}
+                />
+
+            );
         return (
 
             <Router>
@@ -37,6 +47,7 @@ class App extends Component {
                         <Route  component={Index}/>
 
                     </Switch>
+                    {errorDialog}
                     {isFetching && <Loading/>}
 
                 </div>
@@ -47,12 +58,15 @@ class App extends Component {
 
 function mapStateToProps(state) {
     return {
-        isFetching: state.global.isFetching
+        isFetching: state.global.isFetching,
+        msg:state.global.msg
     }
 }
 
 function mapDispatchToProps(dispatch) {
-    return {}
+    return {
+        clearMsg:bindActionCreators(actions.clearMsg, dispatch)
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

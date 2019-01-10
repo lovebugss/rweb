@@ -10,7 +10,7 @@ export default function Logo(props) {
         <div>
             <div className="logo">
                 {/*<div className="text"><img src={logo} className="img"/>{!props.collapsed ? "ITRJP.COM" : ""}</div>*/}
-                <div className="text"><img src={logo} className="img"/> ITRJP.COM </div>
+                <div className="text"><img src={logo} alt="logo" className="img"/> ITRJP.COM </div>
             </div>
         </div>
     )

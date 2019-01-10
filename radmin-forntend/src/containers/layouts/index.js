@@ -10,46 +10,39 @@ import {actions} from '../../reducers/menu';
 import Footer from '../../components/Footer'
 
 import {
-    Layout, Menu, Breadcrumb, Icon,
+    Layout,
 } from 'antd';
 import './index.css'
 
-const {SubMenu} = Menu;
-const {Content, Sider} = Layout;
+const {Content,} = Layout;
 
 
-class Layouts extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        const {children,collapsed,handleMenuCollapse,} = this.props;
-        return (
-            <div className="layout-container">
+function Layouts(props) {
+    const {children, collapsed, handleMenuCollapse,} = props;
+    return (
+        <div className="layout-container">
+            <Layout>
+                <SiderMenu
+                    collapsed={collapsed}
+                >
+                </SiderMenu>
                 <Layout>
-                    <SiderMenu
+                    <Header
+                        handleMenuCollapse={handleMenuCollapse}
                         collapsed={collapsed}
-                    >
-                    </SiderMenu>
+                    />
                     <Layout>
-                        <Header
-                            handleMenuCollapse={handleMenuCollapse}
-                            collapsed={collapsed}
-                        />
-                        <Layout>
-                            <Content overlay="">
-                                {children}
-                            </Content>
-                            <Footer/>
-                        </Layout>
+                        <Content overlay="">
+                            {children}
+                        </Content>
+                        <Footer/>
                     </Layout>
                 </Layout>
-            </div>
-        );
-    }
+            </Layout>
+        </div>
+    );
 }
+
 
 function mapStateToProps(state) {
     return {
@@ -58,7 +51,7 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-        handleMenuCollapse: bindActionCreators(actions.menu_collapse,dispatch),
+        handleMenuCollapse: bindActionCreators(actions.menu_collapse, dispatch),
     }
 }
 

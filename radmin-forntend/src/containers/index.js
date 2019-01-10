@@ -21,7 +21,6 @@ function requireAuth(Layout, props) {
 }
 
 export default function Index() {
-    debugger
     return (
         <div>
             <Layouts>

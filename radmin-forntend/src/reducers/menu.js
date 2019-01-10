@@ -1,9 +1,7 @@
 /**
  * Created by renjp on 2019/1/8.
  */
-import {combineReducers} from 'redux';
-import {loadingBarReducer} from 'react-redux-loading-bar';
-import {connectRouter} from 'connected-react-router'
+
 
 const initialState = {
     isCollapsed: false,
