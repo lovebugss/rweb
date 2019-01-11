@@ -4,11 +4,7 @@ let config = {
     baseURL: '',
     transformRequest: [
         function (data) {
-            let ret = '';
-            for (let it in data) {
-                ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-            }
-            return ret
+            return data;
         }
     ],
     transformResponse: [
@@ -17,7 +13,7 @@ let config = {
         }
     ],
     headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        'Content-Type': 'application/json;charset=UTF-8'
     },
     timeout: 10000,
     responseType: 'json'

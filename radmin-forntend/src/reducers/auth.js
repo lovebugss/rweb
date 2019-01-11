@@ -16,12 +16,10 @@ export const actionTypes = {
 
 // Action Creators
 export const actions = {
-    login: (username, password) => {
-        debugger
+    login: (values) => {
         return {
             type: actionTypes.LOGIN,
-            username,
-            password,
+            values,
         }
     },
     setLoginInfo: (userId, username) => {
@@ -44,9 +42,8 @@ export const getLoggedUser = state => state.auth;
 export function reducer(state = initialState, action) {
     switch (action.type) {
         case actionTypes.LOGIN:
-            debugger
             return {
-                ...state, password: action.password, username: action.username
+                ...state, value:action.values
             };
         case actionTypes.LOGIN_DONE:
             return {

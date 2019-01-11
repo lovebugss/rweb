@@ -15,7 +15,7 @@ class NormalLoginForm extends React.Component {
             if (!err) {
                 console.log('Received values of form: ', values);
                 debugger
-                this.props.login(values.username,values.password);
+                this.props.login(values);
             }
         });
     }

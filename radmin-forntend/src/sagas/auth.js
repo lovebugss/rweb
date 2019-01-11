@@ -10,21 +10,21 @@ import url from '../util/url'
 
 let {setLoginInfo} = actions;
 
-function* loginSaga(username,password) {
+function* loginSaga(action) {
 
     try {
         yield put(showLoading())
         yield put({type: AppActionTypes.FETCH_START});
         // 登录
         debugger
-        // let res = yield get(url.login());
+         let res = yield post(url.login(),action.values);
         // 登录失败 设置全区state
-        // if(!res.error){
+         if(!res.error){
             // yield put(setLoginInfo(res.data));
-        // }else{
+         }else{
         // 登录成功
          yield put(setLoginInfo("admin","admin"));
-        // }
+        }
 
     } catch (Execption) {
         // 登录失败

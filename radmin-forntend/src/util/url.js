@@ -3,8 +3,8 @@
  */
 export default  {
 
-    login: () => "/user/login",
-    logout: () => "/user/logout",
+    login: () => "/login",
+    logout: () => "/logout",
     getMenuList: () => "/api/menu/list"
 
 }
