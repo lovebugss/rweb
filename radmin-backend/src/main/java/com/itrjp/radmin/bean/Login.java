@@ -8,5 +8,5 @@ import lombok.Data;
 @Data
 public class Login {
     private String token;
-    private String ticket;
+    private String username;
 }

@@ -2,18 +2,19 @@ package com.itrjp.radmin.bean;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import java.util.List;
+import javax.persistence.*;
+import java.io.Serializable;
 
-/**
- * Created by ren on 2018/11/4.
- */
 @Data
-@Entity
-public class Role {
-//    @Id
-//    @GeneratedValue
-    private String id;
-    private String roleName;
-    private List resources;
+public class Role implements Serializable{
+    private static final long serialVersionUID = -6140090613812307452L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "roleDesc")
+    private String roledesc;
+    @Transient
+    private Integer selected;
+
 }
