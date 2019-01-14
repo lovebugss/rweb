@@ -4,7 +4,7 @@ let config = {
     baseURL: '',
     transformRequest: [
         function (data) {
-            return data;
+            return JSON.stringify(data);
         }
     ],
     transformResponse: [

@@ -1,0 +1,13 @@
+.trigger{
+    wight:60px;
+}
+
+.header-menu{
+    /*float: right;*/
+    width: 100%;
+    height: 64px;
+}
+.ant-menu-horizontal{
+
+    line-height: 64px;
+}

@@ -18,9 +18,12 @@ const {Content, Sider, Footer} = Layout;
 
 class SiderMenu extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.state={
+            menuData:[]
+        }
     }
-    componentDidMount(){
+    componentWillMount(){
         this.props.getMenuData();
     }
     onOpenChange = (openKeys) => {

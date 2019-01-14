@@ -1,14 +1,14 @@
 /**
  * Created by renjp on 2019/1/10.
  */
-import {get,post} from '../util/fetch';
-import {actions, actionTypes} from '../reducers/auth';
+import { post} from '../util/fetch';
+import {actions as authActions, actionTypes} from '../reducers/auth';
 import {actionsTypes as AppActionTypes} from '../reducers/app';
 import {showLoading, hideLoading} from 'react-redux-loading-bar';
-import {call, put, takeEvery, takeLatest} from 'redux-saga/effects';
+import { put, takeEvery, } from 'redux-saga/effects';
 import url from '../util/url'
 
-let {setLoginInfo} = actions;
+let {setLoginInfo} = authActions;
 
 function* loginSaga(action) {
 
@@ -17,13 +17,15 @@ function* loginSaga(action) {
         yield put({type: AppActionTypes.FETCH_START});
         // 登录
         debugger
-         let res = yield post(url.login(),action.values);
+        let res = yield post(url.login(), action.values);
         // 登录失败 设置全区state
-         if(!res.error){
+        if (res.error) {
+            debugger
             // yield put(setLoginInfo(res.data));
-         }else{
-        // 登录成功
-         yield put(setLoginInfo("admin","admin"));
+        } else {
+            // 登录成功
+            debugger
+            yield put(setLoginInfo(res.data.token, res.data.username));
         }
 
     } catch (Execption) {
@@ -38,6 +40,5 @@ function* loginSaga(action) {
 
 
 export default function* login() {
-    debugger
     yield takeEvery(actionTypes.LOGIN, loginSaga);
 }
