@@ -18,11 +18,17 @@ const {Content,} = Layout;
 
 
 function Layouts(props) {
-    const {children, collapsed, handleMenuCollapse,} = props;
+    const {children, collapsed, handleMenuCollapse, pathname, theme, menuData} = props;
     return (
         <div className="layout-container">
             <Layout>
-                <SiderMenu/>
+                <SiderMenu
+                    collapsed={collapsed}
+                    menuData={menuData}
+                    pathname={pathname}
+                    theme={theme}
+                    getMenuData={props.getMenuData}
+                />
                 <Layout>
                     <Header
                         handleMenuCollapse={handleMenuCollapse}
@@ -44,11 +50,15 @@ function Layouts(props) {
 function mapStateToProps(state) {
     return {
         collapsed: state.menu.isCollapsed,
+        menuData: state.menu.menuData,
+        pathname: state.router.location.pathname,
+        theme: state.menu.theme
     }
 }
 function mapDispatchToProps(dispatch) {
     return {
         handleMenuCollapse: bindActionCreators(actions.menu_collapse, dispatch),
+        getMenuData: bindActionCreators(actions.get_menus, dispatch),
     }
 }
 

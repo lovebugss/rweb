@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import Home from '../Home';
 import Login from '../Login';
+import {notification} from 'antd';
 import {connect} from 'react-redux';
 import {actions} from '../../reducers/app';
 import {bindActionCreators} from 'redux';
 import Loading from '../../components/load';
-import ModalDialog from '../../components/ModalDialog'
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 
 import 'antd/dist/antd.css';
@@ -13,15 +13,28 @@ import 'antd/dist/antd.css';
 
 class App extends Component {
 
+    componentDidUpdate() {
+        let {msg} = this.props;
+        if (msg && msg.code === 0 && msg.content)
+            this.openNotification(msg.type, msg.content)
+
+    }
+
+    openNotification(type, message) {
+        let that = this;
+        notification[type]({
+            message: message,
+            onClose: () => {
+                that.props.clearMsg();
+            }
+        });
+        that.props.clearMsg();
+    };
+
     render() {
-        let {isFetching, msg, userId} = this.props;
-        const errorDialog = msg.code !== 0 && (
-                <ModalDialog
-                    msg={this.props.msg}
-                    onClose={this.props.clearMsg}
-                />
-            );
-        debugger;
+        let {isFetching, userId} = this.props;
+
+
         userId = userId ? userId : window.sessionStorage.getItem("userId");
         let isLogin = !userId && (<Redirect to="/login"/>);
         return (
@@ -36,7 +49,6 @@ class App extends Component {
                         <Route component={Home}/>
 
                     </Switch>
-                    {errorDialog}
                     {isFetching && <Loading/>}
 
                 </div>

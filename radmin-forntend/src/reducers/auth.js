@@ -23,7 +23,6 @@ export const actions = {
         }
     },
     setLoginInfo: (userId, username) => {
-        debugger
         return {
             type: actionTypes.LOGIN_DONE,
             userId: userId,
@@ -47,7 +46,6 @@ export function reducer(state = initialState, action) {
                 ...state, value:action.values
             };
         case actionTypes.LOGIN_DONE:
-            debugger
             return {
                 ...state, userId: action.userId, username: action.username
             };

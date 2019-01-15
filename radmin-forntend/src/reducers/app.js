@@ -1,13 +1,11 @@
 /**
  * Created by renjp on 2019/1/3.
  */
-import {combineReducers} from 'redux';
-import {loadingBarReducer} from 'react-redux-loading-bar';
 
 const initialState = {
     isFetching: false,
     msg: {
-        code:0,
+        code:"",
         content:"",
         type:"",
     },
@@ -24,6 +22,7 @@ export const actionsTypes = {
 export const actions = {
     clearMsg: () => {
         return{
+            type: actionsTypes.CLEAR_MESSAGE,
         }
     },
     setMsg: function (type,content,code) {
@@ -50,11 +49,19 @@ export function reducer(state = initialState, action) {
         case actionsTypes.SET_MESSAGE:
             return {
                 ...state,
-                isFetching: false,
                 msg: {
                     code:action.code,
                     type: action.msgType,
                     content: action.content
+                }
+            };
+            case actionsTypes.CLEAR_MESSAGE:
+            return {
+                ...state,
+                msg: {
+                    code:"",
+                    type: "",
+                    content: ""
                 }
             };
         default:

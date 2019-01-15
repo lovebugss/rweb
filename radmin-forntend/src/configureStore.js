@@ -1,15 +1,14 @@
-import {createStore, applyMiddleware, compose} from 'redux'
+import rootSaga from './sagas'
 import rootReducer from './reducers'
 import createSagaMiddleware from 'redux-saga'
-import rootSaga from './sagas'
-import { loadingBarMiddleware } from 'react-redux-loading-bar'
 import { createBrowserHistory } from 'history'
+import {createStore, applyMiddleware, compose} from 'redux'
 import { routerMiddleware } from 'connected-react-router'
 
 
 const win = window;
 const sagaMiddleware = createSagaMiddleware();
-const middlewares = [loadingBarMiddleware()];
+const middlewares = [];
 const history = createBrowserHistory()
 
 let storeEnhancers;

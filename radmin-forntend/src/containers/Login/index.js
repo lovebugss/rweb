@@ -7,7 +7,6 @@ import {Layout} from "antd";
 import style from './style.css';
 import LoginFrom from './LoginForm';
 import {connect} from 'react-redux';
-import QueueAnim from 'rc-queue-anim';
 import {bindActionCreators} from 'redux';
 import Particles from 'reactparticles.js';
 import {Redirect} from "react-router-dom";
@@ -24,7 +23,6 @@ class Login extends React.Component {
             redirectToReferrer: false
         }
     }
-
 
     componentWillReceiveProps(nextProps) {
         debugger
@@ -54,11 +52,9 @@ class Login extends React.Component {
             >
                 <Particles id="test" config="particles.json"/>
                 {/*<Layout className="login">*/}
-                <QueueAnim delay={300}>
                     <LoginFrom
                         login={this.props.login}
                     />
-                </QueueAnim>
                 {/*</Layout>*/}
                 <div className="footer">
                     ©2017-2018 ITRJP.COM版权所有

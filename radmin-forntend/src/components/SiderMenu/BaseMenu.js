@@ -26,6 +26,7 @@ class BaseMenu extends React.Component {
     constructor(porps) {
         super(porps);
     }
+
     /**
      * 获取子节点
      * @param menuData
@@ -95,7 +96,7 @@ class BaseMenu extends React.Component {
     }
 
     render() {
-        const {menuData, pathname, flatMenuKeys,theme} = this.props;
+        const {menuData, pathname, flatMenuKeys, theme} = this.props;
 
         let selectedKeys = this.getSelectedMenuKeys(pathname);
         let props = {}

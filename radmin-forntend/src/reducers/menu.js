@@ -23,7 +23,6 @@ export const actionsTypes = {
 export const actions = {
 
     menu_collapse: (collapse) => {
-        debugger
         return {
             type: actionsTypes.MENU_COLLAPSE,
             collapse
