@@ -1,19 +1,14 @@
 /**
  * Created by renjp on 2019/1/3.
  */
-import React from 'react';
-import bg from './bg.jpg';
-import {Layout} from "antd";
-import style from './style.css';
-import LoginFrom from './LoginForm';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import Particles from 'reactparticles.js';
+import React from "react";
+import {Button, Checkbox, Form, Icon, Input, Layout} from "antd";
+import LoginFrom from "./LoginForm";
+import {connect} from "react-redux";
+import CityWrapper from "../../components/CityWrapper";
+import {bindActionCreators} from "redux";
 import {Redirect} from "react-router-dom";
-import {
-    Form, Icon, Input, Button, Checkbox,
-} from 'antd';
-import {actions as authActions, actionTypes,getLoggedUser} from '../../reducers/auth'
+import {actions as authActions, getLoggedUser} from "../../reducers/auth";
 
 
 class Login extends React.Component {
@@ -25,7 +20,6 @@ class Login extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        debugger
         const isLoggedIn = !this.props.user.userId && nextProps.user.userId;
         if (isLoggedIn) {
             this.setState({
@@ -43,14 +37,18 @@ class Login extends React.Component {
 
         return (
             <div className="login-main"
-                 style={{
-                     backgroundImage: `url(${bg})`,
-                     backgroundSize: 'cover',
-                     backgroundPosition: 'center',
-
-                 }}
+                // style={{
+                //     backgroundImage: `url(${bg})`,
+                //     backgroundSize: 'cover',
+                //     backgroundPosition: 'center',
+                //
+                // }}
             >
-                <Particles id="test" config="particles.json"/>
+                <div className="wrapper">
+
+                    <CityWrapper />
+                </div>
+                {/*<Particles id="test" config="particles.json"/>*/}
                 {/*<Layout className="login">*/}
                     <LoginFrom
                         login={this.props.login}
