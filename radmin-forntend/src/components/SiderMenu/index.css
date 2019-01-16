@@ -2,3 +2,6 @@
     width: 14px;
     margin-right: 10px;
 }
+.ant-layout-sider {
+    box-shadow: 2px 0 7px rgba(0,21,41,.35)
+}

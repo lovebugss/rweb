@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {Redirect} from "react-router-dom";
 import CityWrapper from "../../components/CityWrapper";
-import {Button, Checkbox, Form, Icon, Input, Layout} from "antd";
+import {Layout} from "antd";
 import {actions as authActions, getLoggedUser} from "../../reducers/auth";
 
 

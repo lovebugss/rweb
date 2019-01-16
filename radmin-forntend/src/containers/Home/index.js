@@ -6,10 +6,11 @@ import Edit from '../Edit';
 import Layouts from '../Layouts';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import ArticleManage from '../ArticleManage';
+import CommentManage from '../CommentManage';
 import Analysis from '../dashboard/analysis';
 import SystemMenu from '../System/SystemMenu';
 import NotFound from '../../components/NotFound';
-import ArticleManage from '../Blog/ArticleManage';
 import {Route, Switch, Redirect} from "react-router-dom";
 import {actions} from '../../reducers/auth'
 
@@ -53,9 +54,8 @@ class Home extends React.Component {
 
     render() {
         return (
-
             <div>
-                <Layouts>
+                <Layouts {...this.props}>
                     <Switch>
                         {/*<Route path="/" component={props => requireAuth(Layouts, props)}>*/}
                         {/*<Route path="/" component={Layouts}>*/}
@@ -63,6 +63,7 @@ class Home extends React.Component {
                         <Route path="/edit" component={props => requireAuth(Edit, props)}/>
                         <Route path="/dashboard/analysis" component={props => requireAuth(Analysis, props)}/>
                         <Route path="/blog/article" component={props => requireAuth(ArticleManage, props)}/>
+                        <Route path="/blog/comment" component={props => requireAuth(CommentManage, props)}/>
                         <Route path="/system/menu" component={props => requireAuth(SystemMenu, props)}/>
                         <Redirect from="" to="/dashboard/analysis"/>
                         {/*<Route path="/edit" component={Edit}/>*/}

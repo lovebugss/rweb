@@ -2,6 +2,7 @@
  * Created by renjp on 2019/1/4.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import url from '../../util/url'
 import {get} from '../../util/fetch';
 import Logo from '../Logo';
@@ -55,5 +56,10 @@ class SiderMenu extends React.Component {
         );
     }
 }
-
+SiderMenu.propTypes = {
+    menuData: PropTypes.array,
+    pathname: PropTypes.string,
+    collapsed: PropTypes.bool,
+    theme: PropTypes.string
+}
 export default SiderMenu;

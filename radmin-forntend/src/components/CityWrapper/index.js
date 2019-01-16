@@ -13,7 +13,7 @@ class CityWrapper extends React.Component {
             this.houseSix, this.houseSeven, this.wheel2];
         this.index = '10';
         let container = document.getElementById("container");
-        var parallaxInstance = new Parallax(container, {pointerEvents: true});
+        new Parallax(container, {pointerEvents: true});
         TweenMax.set(this.wheel, {transformOrigin: '50% 50%'});
         TweenMax.to(this.wheel, 100, {rotation: '360', ease: Linear.easeNone, repeat: -1});
     }

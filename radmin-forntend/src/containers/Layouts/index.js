@@ -18,14 +18,14 @@ const {Content,} = Layout;
 
 
 function Layouts(props) {
-    const {children, collapsed, handleMenuCollapse, pathname, theme, menuData} = props;
+    const {children, collapsed, handleMenuCollapse, theme, menuData} = props;
     return (
         <div className="layout-container">
             <Layout>
                 <SiderMenu
                     collapsed={collapsed}
                     menuData={menuData}
-                    pathname={pathname}
+                    pathname={props.location.pathname}
                     theme={theme}
                     getMenuData={props.getMenuData}
                 />
@@ -51,7 +51,6 @@ function mapStateToProps(state) {
     return {
         collapsed: state.menu.isCollapsed,
         menuData: state.menu.menuData,
-        pathname: state.router.location.pathname,
         theme: state.menu.theme
     }
 }

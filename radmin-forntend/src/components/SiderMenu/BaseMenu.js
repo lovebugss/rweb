@@ -11,7 +11,6 @@ import {urlToList, getMenuMatches} from './SiderMenuUtils'
 import styles from './index.css';
 import {isUrl} from '../../util/utils';
 const {SubMenu} = Menu;
-const {Content, Sider, Footer} = Layout;
 
 const getIcon = icon => {
     if (typeof icon === 'string' && isUrl(icon)) {
@@ -23,9 +22,6 @@ const getIcon = icon => {
     return icon;
 };
 class BaseMenu extends React.Component {
-    constructor(porps) {
-        super(porps);
-    }
 
     /**
      * 获取子节点
@@ -64,13 +60,13 @@ class BaseMenu extends React.Component {
                 </SubMenu>
             );
         }
-        // 没有
+        // 无
         return (
             <Menu.Item key={menu.path}>{this.getMenuItemPath(menu)}</Menu.Item>);
 
     }
     /**
-     * 获取
+     * 获取节点
      * @param menu
      */
     getMenuItemPath = (menu) => {
@@ -100,7 +96,6 @@ class BaseMenu extends React.Component {
 
         let selectedKeys = this.getSelectedMenuKeys(pathname);
         let props = {}
-
         return (
             <Menu
                 theme={theme}

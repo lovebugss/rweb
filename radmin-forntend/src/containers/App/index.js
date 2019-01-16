@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Home from '../Home';
 import Login from '../Login';
-import CityWrapper from "../../components/CityWrapper"
 import {notification} from 'antd';
 import {connect} from 'react-redux';
 import {actions} from '../../reducers/app';
