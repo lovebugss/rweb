@@ -1,6 +1,4 @@
-package com.itrjp.radmin.controller;/**
- * Created by renjp on 2019/1/7.
- */
+package com.itrjp.radmin.controller;
 
 import com.itrjp.common.result.Result;
 import com.itrjp.radmin.bean.Menu;
@@ -29,4 +27,5 @@ public class MenuController {
 
         return Result.success(this.menuService.getAll());
     }
+
 }

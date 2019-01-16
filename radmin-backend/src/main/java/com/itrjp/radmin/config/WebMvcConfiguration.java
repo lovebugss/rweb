@@ -1,5 +1,6 @@
 package com.itrjp.radmin.config;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -7,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  *
  * Created by ren on 2018/11/4.
  */
-//@Configuration
+@Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Override

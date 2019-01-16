@@ -4,7 +4,7 @@ package com.itrjp.radmin.controller;/**
 
 import com.itrjp.common.result.Result;
 import com.itrjp.radmin.bean.Login;
-import com.itrjp.radmin.bean.User;
+import com.itrjp.radmin.bean.UserInfo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -35,7 +35,7 @@ public class HomeController {
      * @return
      */
     @PostMapping(value = "/login")
-    public Result<Login> login(@RequestBody User user) {
+    public Result<Login> login(@RequestBody UserInfo user) {
         Result result = null;
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
