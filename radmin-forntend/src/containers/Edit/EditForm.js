@@ -51,7 +51,6 @@ class Demo extends React.Component {
     }
 
     normFile = (e) => {
-        console.log('Upload event:', e);
         if (Array.isArray(e)) {
             return e;
         }
@@ -75,9 +74,8 @@ class Demo extends React.Component {
                     })(
                         <Input placeholder="文章标题"/>
                     )}
-
-
                 </Form.Item>
+
                 <Form.Item
                     {...formItemLayout}
                     label="文章分类"
@@ -98,7 +96,7 @@ class Demo extends React.Component {
                 <Form.Item
                     {...formItemLayout}
                     label="封面"
-                    extra="longgggggggggggggggggggggggggggggggggg"
+                    extra=""
                 >
                     {getFieldDecorator('upload', {
                         valuePropName: 'fileList',
@@ -106,29 +104,18 @@ class Demo extends React.Component {
                     })(
                         <Upload name="logo" action="/upload.do" listType="picture">
                             <Button>
-                                <Icon type="upload"/> Click to upload
+                                <Icon type="upload"/> 上传封面
                             </Button>
                         </Upload>
                     )}
                 </Form.Item>
+
                 <Form.Item
                     {...formItemLayout}
                     label="正文"
                 >
-                    {/*{getFieldDecorator('content', {*/}
-                         {/*// rules: [{required: true, message: '请输入内容'}],*/}
-                     {/*// })(*/}
-                        <textarea id="editor"></textarea>
-                    {/*)}*/}
-
+                    <textarea id="editor"></textarea>
                 </Form.Item>
-                {/*<Form.Item*/}
-                {/*{...formItemLayout}*/}
-                {/*label="描述"*/}
-                {/*>*/}
-                {/*<TextArea/>*/}
-                {/*</Form.Item>*/}
-
 
                 <Form.Item
                     wrapperCol={{span: 12, offset: 6}}

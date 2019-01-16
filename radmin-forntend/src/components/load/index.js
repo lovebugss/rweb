@@ -8,7 +8,7 @@ import style from './style.css';
 
 const antIcon = <Icon type="sync" style={{fontSize: 24}} spin/>;
 export default  () => (
-    <div className="container">
+    <div className="load-container">
         <Spin indicator={antIcon}/>
     </div>
 );

@@ -20,9 +20,8 @@ class Edit extends React.Component {
                     style={{padding: '0 24px 24px'}}
                 >
                     <Breadcrumb style={{margin: '16px 0'}}>
-                        <Breadcrumb.Item>Home</Breadcrumb.Item>
-                        <Breadcrumb.Item>List</Breadcrumb.Item>
-                        <Breadcrumb.Item>App</Breadcrumb.Item>
+                        <Breadcrumb.Item>主页</Breadcrumb.Item>
+                        <Breadcrumb.Item>写文章</Breadcrumb.Item>
                     </Breadcrumb>
                     <Content
                         style={{

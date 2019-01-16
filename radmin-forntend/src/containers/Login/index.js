@@ -2,12 +2,12 @@
  * Created by renjp on 2019/1/3.
  */
 import React from "react";
-import {Button, Checkbox, Form, Icon, Input, Layout} from "antd";
 import LoginFrom from "./LoginForm";
 import {connect} from "react-redux";
-import CityWrapper from "../../components/CityWrapper";
 import {bindActionCreators} from "redux";
 import {Redirect} from "react-router-dom";
+import CityWrapper from "../../components/CityWrapper";
+import {Button, Checkbox, Form, Icon, Input, Layout} from "antd";
 import {actions as authActions, getLoggedUser} from "../../reducers/auth";
 
 
@@ -37,23 +37,16 @@ class Login extends React.Component {
 
         return (
             <div className="login-main"
-                // style={{
-                //     backgroundImage: `url(${bg})`,
-                //     backgroundSize: 'cover',
-                //     backgroundPosition: 'center',
-                //
-                // }}
             >
-                <div className="wrapper">
 
-                    <CityWrapper />
-                </div>
-                {/*<Particles id="test" config="particles.json"/>*/}
-                {/*<Layout className="login">*/}
+                <CityWrapper />
+                <Layout className="login"
+                        style={{backgroundColor: "rgba(0, 0, 0, 0)",}}
+                >
                     <LoginFrom
                         login={this.props.login}
                     />
-                {/*</Layout>*/}
+                </Layout>
                 <div className="footer">
                     ©2017-2018 ITRJP.COM版权所有
                     <br/>

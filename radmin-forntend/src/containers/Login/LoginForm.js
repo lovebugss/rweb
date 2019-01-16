@@ -13,8 +13,6 @@ class NormalLoginForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
-                debugger
                 this.props.login(values);
             }
         });
@@ -23,13 +21,13 @@ class NormalLoginForm extends React.Component {
         const {getFieldDecorator} = this.props.form;
         return (
             <div className="login">
-                <div className="header">
+                <div className="login-header">
 
-                    <div className="logo" style={{backGround:"#fff"}}>
+                    <div className="header-logo" style={{backGround:"#fff"}}>
                         <h2>管理系统</h2>
                     </div>
-                    <div className="desc">
-                        haha
+                    <div className="header-desc">
+                        啊哈哈~嗝
                     </div>
                 </div>
 
