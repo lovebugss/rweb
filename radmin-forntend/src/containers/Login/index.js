@@ -48,9 +48,13 @@ class Login extends React.Component {
                     />
                 </Layout>
                 <div className="footer">
-                    ©2017-2018 ITRJP.COM版权所有
-                    <br/>
-                    <a href="http://www.miibeian.gov.cn/">冀ICP备17025801号-1</a>
+                    <p>
+                        ©2017-2018 ITRJP.COM版权所有
+                        <br/>
+                        <a href="http://www.miibeian.gov.cn/">冀ICP备17025801号-1</a>
+
+                    </p>
+
                 </div>
             </div>)
     }

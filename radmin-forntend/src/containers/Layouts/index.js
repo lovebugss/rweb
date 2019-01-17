@@ -27,7 +27,6 @@ function Layouts(props) {
                     menuData={menuData}
                     pathname={props.location.pathname}
                     theme={theme}
-                    getMenuData={props.getMenuData}
                 />
                 <Layout>
                     <Header

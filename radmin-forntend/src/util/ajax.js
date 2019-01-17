@@ -11,10 +11,6 @@ let baseConfig = {
     url: '/',
     // `method` 是创建请求时使用的方法
     method: 'post', // default
-
-    // `baseURL` will be prepended to `url` unless `url` is absolute. It can be
-    // convenient to set `baseURL` for an instance of axios to pass relative URLs to
-    // methods of that instance.
     baseURL: '',
 
     // `transformRequest` allows changes to the request data before it is sent to

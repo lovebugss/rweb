@@ -12,11 +12,15 @@ import Analysis from '../dashboard/analysis';
 import SystemMenu from '../System/SystemMenu';
 import NotFound from '../../components/NotFound';
 import {Route, Switch, Redirect} from "react-router-dom";
-import {actions} from '../../reducers/auth'
+import {actions as authActions} from '../../reducers/auth';
+import {actions as menuActions} from '../../reducers/menu'
 
 // 登录验证
 function requireAuth(Layout, props) {
-    if (false) { // 未登录
+   let userId = sessionStorage.getItem("userId");
+   let username = sessionStorage.getItem("username");
+debugger
+    if (!(userId || username)) { // 未登录
         return <Redirect to="/login"/>;
     } else {
         return <Layout  />
@@ -31,9 +35,12 @@ class Home extends React.Component {
             this.restoreLoginInfo();
         }
     }
-
+    componentDidMount(){
+            this.props.getMenuData();
+    }
     componentWillUnmount() {
         window.removeEventListener("beforeunload", this.handleBeforeUnload);
+
     }
 
     restoreLoginInfo = () => {
@@ -45,6 +52,7 @@ class Home extends React.Component {
     };
 
     handleBeforeUnload = () => {
+        debugger
         const {userId, username} = this.props.user;
         if (userId && username) {
             sessionStorage.setItem("userId", userId);
@@ -86,7 +94,8 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-        setLoginInfo: bindActionCreators(actions.setLoginInfo, dispatch),
+        setLoginInfo: bindActionCreators(authActions.setLoginInfo, dispatch),
+        getMenuData: bindActionCreators(menuActions.get_menus, dispatch),
     }
 }
 export default  connect(mapStateToProps, mapDispatchToProps)(Home);

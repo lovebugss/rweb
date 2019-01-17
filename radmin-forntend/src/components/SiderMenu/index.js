@@ -23,15 +23,9 @@ class SiderMenu extends React.Component {
             menuData: []
         }
     }
-
-    componentWillMount() {
-        this.props.getMenuData();
-    }
-
     onOpenChange = (openKeys) => {
 
     }
-
     render() {
         const {menuData, pathname, collapsed, theme} = this.props;
         const flatMenuKeys = getFlatMenuKeys(menuData);

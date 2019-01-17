@@ -3,9 +3,10 @@
  */
 import url from '../util/url'
 import {get} from '../util/fetch';
-import {put, takeEvery} from 'redux-saga/effects';
+import {getRequest} from '../util/axios'
+import {put, takeEvery,takeLatest} from 'redux-saga/effects';
 import {actions, actionsTypes} from '../reducers/menu';
-import {actionsTypes as AppActionTypes} from '../reducers/app';
+import {actionsTypes as AppActionTypes, actions as AppActions} from '../reducers/app';
 
 
 const {init_menus} = actions;
@@ -13,9 +14,17 @@ const {init_menus} = actions;
 function* getMenus() {
 
     try {
+        debugger
         yield put({type: AppActionTypes.FETCH_START});
-        let res = yield get(url.getMenuList());
-        yield put(init_menus(res.data));
+        let res = yield getRequest(url.getMenuList());
+        if (res.code === 0) {
+            sessionStorage.removeItem("userId")
+            yield put(AppActions.setMsg("error", res.msg));
+        }
+        else {
+
+            yield put(init_menus(res.data));
+        }
 
     } catch (Execption) {
 
@@ -25,5 +34,5 @@ function* getMenus() {
 }
 
 export default function* loadMenus() {
-    yield takeEvery(actionsTypes.GET_MENU, getMenus)
+    yield takeLatest(actionsTypes.GET_MENU, getMenus)
 }

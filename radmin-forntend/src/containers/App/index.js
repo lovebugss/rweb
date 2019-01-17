@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Home from '../Home';
 import Login from '../Login';
+import {Cookies} from 'react-cookie';
 import {notification} from 'antd';
 import {connect} from 'react-redux';
 import {actions} from '../../reducers/app';
@@ -33,10 +34,9 @@ class App extends Component {
 
     render() {
         let {isFetching, userId} = this.props;
-
-
+        debugger
         userId = userId ? userId : window.sessionStorage.getItem("userId");
-        let isLogin = !userId && (<Redirect to="/login"/>);
+        let isLogin = !(userId && window.sessionStorage.getItem("userId")) && (<Redirect to="/login"/>);
         return (
 
             <Router>
