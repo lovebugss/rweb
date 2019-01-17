@@ -27,7 +27,7 @@ public class HomeController {
     @GetMapping(value = "/error")
     public Result<String> error() {
 
-        return Result.error("error");
+        return Result.error("请登录");
     }
     /**
      * 登录方法
