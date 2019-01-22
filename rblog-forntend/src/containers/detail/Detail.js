@@ -11,6 +11,8 @@ import {bindActionCreators} from 'redux';
 import {actions} from '../../reducers/article'
 import marked from 'marked';
 import hljs from 'highlight.js';
+import  ReactMarkdown from 'react-markdown'
+import htmlParser  from 'react-markdown/plugins/html-parser'
 
 
 import style from './style.css'
@@ -72,7 +74,14 @@ class Detail extends React.Component {
                             {/*/>*/}
                             {/*{this.props.detail.content}*/}
                             {/*<div dangerouslySetInnerHTML={{__html:marked(this.props.detail.content ? marked(this.props.detail.content) : "")}} />*/}
-                            {marked(this.props.detail.content ? marked(this.props.detail.content) : "")}
+                            {/*{marked(this.props.detail.content ? marked(this.props.detail.content) : "")}*/}
+                            <ReactMarkdown
+                                source={this.props.detail.content}
+                                escapeHtml={false}
+                                skipHtml={false}
+                                sourcePos={false}
+                                // astPlugins={[parseHtml]}
+                            />
                             <div>
                                 {/*{remark().use(remark2react).processSync(this.props.detail.content).contents}*/}
                                 {/*{this.props.detail.content}*/}
