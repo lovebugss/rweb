@@ -17,9 +17,8 @@ import {actions as menuActions} from '../../reducers/menu'
 
 // 登录验证
 function requireAuth(Layout, props) {
-   let userId = sessionStorage.getItem("userId");
-   let username = sessionStorage.getItem("username");
-debugger
+    let userId = sessionStorage.getItem("userId");
+    let username = sessionStorage.getItem("username");
     if (!(userId || username)) { // 未登录
         return <Redirect to="/login"/>;
     } else {
@@ -35,9 +34,11 @@ class Home extends React.Component {
             this.restoreLoginInfo();
         }
     }
-    componentDidMount(){
-            this.props.getMenuData();
+
+    componentDidMount() {
+        this.props.getMenuData();
     }
+
     componentWillUnmount() {
         window.removeEventListener("beforeunload", this.handleBeforeUnload);
 
@@ -52,7 +53,6 @@ class Home extends React.Component {
     };
 
     handleBeforeUnload = () => {
-        debugger
         const {userId, username} = this.props.user;
         if (userId && username) {
             sessionStorage.setItem("userId", userId);

@@ -11,14 +11,14 @@ axios.interceptors.request.use(config => {
     return Promise.resolve(err);
 })
 axios.interceptors.response.use(data => {
-    debugger
+
     if (data.code && data.msg && data.code == 0) {
         message.error({message: data.data.msg});
         return;
     }
     return data;
 }, err => {
-    debugger
+
     if (err.response.status == 504 || err.response.status == 404) {
         message.error({message: '服务器被吃了⊙﹏⊙∥'});
     } else if (err.response.status == 403) {

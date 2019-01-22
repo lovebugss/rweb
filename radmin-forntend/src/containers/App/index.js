@@ -34,7 +34,6 @@ class App extends Component {
 
     render() {
         let {isFetching, userId} = this.props;
-        debugger
         userId = userId ? userId : window.sessionStorage.getItem("userId");
         let isLogin = !(userId && window.sessionStorage.getItem("userId")) && (<Redirect to="/login"/>);
         return (

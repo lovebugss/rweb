@@ -14,7 +14,7 @@ const {init_menus} = actions;
 function* getMenus() {
 
     try {
-        debugger
+
         yield put({type: AppActionTypes.FETCH_START});
         let res = yield getRequest(url.getMenuList());
         if (res.code === 0) {
