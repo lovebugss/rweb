@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import ArticleManage from '../ArticleManage';
 import CommentManage from '../CommentManage';
+import UserManage from '../UserManage'
 import Analysis from '../dashboard/analysis';
 import SystemMenu from '../System/SystemMenu';
 import NotFound from '../../components/NotFound';
@@ -62,27 +63,26 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div>
-                <Layouts {...this.props}>
-                    <Switch>
-                        {/*<Route path="/" component={props => requireAuth(Layouts, props)}>*/}
-                        {/*<Route path="/" component={Layouts}>*/}
+            <Layouts {...this.props}>
+                <Switch>
+                    {/*<Route path="/" component={props => requireAuth(Layouts, props)}>*/}
+                    {/*<Route path="/" component={Layouts}>*/}
 
-                        <Route path="/edit" component={props => requireAuth(Edit, props)}/>
-                        <Route path="/dashboard/analysis" component={props => requireAuth(Analysis, props)}/>
-                        <Route path="/blog/article" component={props => requireAuth(ArticleManage, props)}/>
-                        <Route path="/blog/comment" component={props => requireAuth(CommentManage, props)}/>
-                        <Route path="/system/menu" component={props => requireAuth(SystemMenu, props)}/>
-                        <Redirect from="" to="/dashboard/analysis"/>
-                        {/*<Route path="/edit" component={Edit}/>*/}
-                        {/*<Route path="/dashboard/analysis" component={Analysis}/>*/}
-                        {/*<Route path="/blog/article" component={ArticleManage}/>*/}
-                        {/*<Route path="/system/menu" component={SystemMenu}/>*/}
-                        <Route component={NotFound}/>
-                        {/*</Route>*/}
-                    </Switch>
-                </Layouts>
-            </div>
+                    <Route path="/edit" component={props => requireAuth(Edit, props)}/>
+                    <Route path="/dashboard/analysis" component={props => requireAuth(Analysis, props)}/>
+                    <Route path="/blog/article" component={props => requireAuth(ArticleManage, props)}/>
+                    <Route path="/blog/comment" component={props => requireAuth(CommentManage, props)}/>
+                    <Route path="/system/menu" component={props => requireAuth(SystemMenu, props)}/>
+                    <Route path="/system/user" component={props => requireAuth(UserManage, props)}/>
+                    <Redirect exact from="" to="/dashboard/analysis"/>
+                    {/*<Route path="/edit" component={Edit}/>*/}
+                    {/*<Route path="/dashboard/analysis" component={Analysis}/>*/}
+                    {/*<Route path="/blog/article" component={ArticleManage}/>*/}
+                    {/*<Route path="/system/menu" component={SystemMenu}/>*/}
+                    <Route component={NotFound}/>
+                    {/*</Route>*/}
+                </Switch>
+            </Layouts>
         )
             ;
     }

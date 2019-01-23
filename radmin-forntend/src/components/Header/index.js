@@ -16,7 +16,6 @@ function HeaderView(props) {
 
     return (
         <Header className="layout-header" style={{background: '#fff', padding: 0}}>
-
             <Icon
                 className="trigger"
                 type={props.collapsed ? 'menu-unfold' : 'menu-fold'}

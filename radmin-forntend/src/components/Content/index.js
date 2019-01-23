@@ -19,7 +19,6 @@ export default function (props) {
     return (
         <Layout style={{padding: '0 24px 24px'}}>
             <Layout
-
             >
                 <Breadcrumb style={{margin: '12px 0'}}>
                     {nav}

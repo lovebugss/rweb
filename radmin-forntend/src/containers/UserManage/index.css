@@ -1,0 +1,16 @@
+.role-table {
+    background-color: #fff;
+    margin: 12px;
+    padding: 12px;
+    min-height: 420px;
+}
+.user-table {
+    background-color: #fff;
+    margin: 12px;
+    padding: 12px;
+    min-height: 420px;
+}
+
+.ant-table-content {
+    min-height: 460px;
+}
