@@ -28,7 +28,7 @@ function Layouts(props) {
                     pathname={props.location.pathname}
                     theme={theme}
                 />
-                <Layout>
+                <Layout style={{minHeight:"100vh"}}>
                     <Header
                         handleMenuCollapse={handleMenuCollapse}
                         collapsed={collapsed}

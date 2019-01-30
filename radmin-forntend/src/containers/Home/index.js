@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import ArticleManage from '../ArticleManage';
 import CommentManage from '../CommentManage';
+import UserManage from '../UserManage'
 import Analysis from '../dashboard/analysis';
 import SystemMenu from '../System/SystemMenu';
 import NotFound from '../../components/NotFound';
@@ -17,9 +18,8 @@ import {actions as menuActions} from '../../reducers/menu'
 
 // 登录验证
 function requireAuth(Layout, props) {
-   let userId = sessionStorage.getItem("userId");
-   let username = sessionStorage.getItem("username");
-debugger
+    let userId = sessionStorage.getItem("userId");
+    let username = sessionStorage.getItem("username");
     if (!(userId || username)) { // 未登录
         return <Redirect to="/login"/>;
     } else {
@@ -35,9 +35,11 @@ class Home extends React.Component {
             this.restoreLoginInfo();
         }
     }
-    componentDidMount(){
-            this.props.getMenuData();
+
+    componentDidMount() {
+        this.props.getMenuData();
     }
+
     componentWillUnmount() {
         window.removeEventListener("beforeunload", this.handleBeforeUnload);
 
@@ -52,7 +54,6 @@ class Home extends React.Component {
     };
 
     handleBeforeUnload = () => {
-        debugger
         const {userId, username} = this.props.user;
         if (userId && username) {
             sessionStorage.setItem("userId", userId);
@@ -62,27 +63,26 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div>
-                <Layouts {...this.props}>
-                    <Switch>
-                        {/*<Route path="/" component={props => requireAuth(Layouts, props)}>*/}
-                        {/*<Route path="/" component={Layouts}>*/}
+            <Layouts {...this.props}>
+                <Switch>
+                    {/*<Route path="/" component={props => requireAuth(Layouts, props)}>*/}
+                    {/*<Route path="/" component={Layouts}>*/}
 
-                        <Route path="/edit" component={props => requireAuth(Edit, props)}/>
-                        <Route path="/dashboard/analysis" component={props => requireAuth(Analysis, props)}/>
-                        <Route path="/blog/article" component={props => requireAuth(ArticleManage, props)}/>
-                        <Route path="/blog/comment" component={props => requireAuth(CommentManage, props)}/>
-                        <Route path="/system/menu" component={props => requireAuth(SystemMenu, props)}/>
-                        <Redirect from="" to="/dashboard/analysis"/>
-                        {/*<Route path="/edit" component={Edit}/>*/}
-                        {/*<Route path="/dashboard/analysis" component={Analysis}/>*/}
-                        {/*<Route path="/blog/article" component={ArticleManage}/>*/}
-                        {/*<Route path="/system/menu" component={SystemMenu}/>*/}
-                        <Route component={NotFound}/>
-                        {/*</Route>*/}
-                    </Switch>
-                </Layouts>
-            </div>
+                    <Route path="/edit" component={props => requireAuth(Edit, props)}/>
+                    <Route path="/dashboard/analysis" component={props => requireAuth(Analysis, props)}/>
+                    <Route path="/blog/article" component={props => requireAuth(ArticleManage, props)}/>
+                    <Route path="/blog/comment" component={props => requireAuth(CommentManage, props)}/>
+                    <Route path="/system/menu" component={props => requireAuth(SystemMenu, props)}/>
+                    <Route path="/system/user" component={props => requireAuth(UserManage, props)}/>
+                    <Redirect exact from="" to="/dashboard/analysis"/>
+                    {/*<Route path="/edit" component={Edit}/>*/}
+                    {/*<Route path="/dashboard/analysis" component={Analysis}/>*/}
+                    {/*<Route path="/blog/article" component={ArticleManage}/>*/}
+                    {/*<Route path="/system/menu" component={SystemMenu}/>*/}
+                    <Route component={NotFound}/>
+                    {/*</Route>*/}
+                </Switch>
+            </Layouts>
         )
             ;
     }

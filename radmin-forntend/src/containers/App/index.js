@@ -34,15 +34,12 @@ class App extends Component {
 
     render() {
         let {isFetching, userId} = this.props;
-        debugger
         userId = userId ? userId : window.sessionStorage.getItem("userId");
         let isLogin = !(userId && window.sessionStorage.getItem("userId")) && (<Redirect to="/login"/>);
         return (
-
             <Router>
                 <div>
                     <Switch>
-
                         <Route path="/login" component={Login}/>
                         {isLogin}
                         {/*<Route  component={props => requireAuth(Index, props)}/>*/}
@@ -50,7 +47,6 @@ class App extends Component {
 
                     </Switch>
                     {isFetching && <Loading/>}
-
                 </div>
             </Router>
         )

@@ -25,12 +25,12 @@ public class MenuServiceImpl implements MenuService {
         List<Menu> rootMenus = menuMapper.selectAll();
         //子菜单
         List<Menu> children = rootMenus.stream()
-                .filter((menu) -> menu.getActiveFlag() == 1 && menu.getParentId() != null)
+                .filter((menu) ->   menu.getParentId() != null)
                 .sorted(Comparator.comparing(Menu::getOrderNum))
                 .collect(Collectors.toList());
         //最终数据
         List<Menu> menus = rootMenus.stream()
-                .filter((menu) -> menu.getActiveFlag() == 1 && menu.getParentId() == null)
+                .filter((menu) -> menu.getParentId() == null)
                 .map(menu -> {
                     menu.setChildren(getChild(menu.getId(), children));
                     return menu;
