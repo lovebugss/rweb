@@ -1,4 +1,4 @@
-![image](https://img.shields.io/badge/Spring%20Cloud-%E2%98%85%E2%98%85%E2%98%85-green.svg)
+![image](https://img.shields.io/badge/Spring%20Cloud-%E2%98%85%E2%98%85%E2%98%85-green.svg)  
 ###rweb
 >
 技术栈：
@@ -16,7 +16,7 @@ Spring Boot + Mybatis + Druid + Thymeleaf + Lombok
   	</thead>
   	<tbody>
     	<tr>
-      		<td>rweb-erueka-service</td>
+      		<td>rweb-eureka-service</td>
       		<td>服务注册中心</td>
 			<td>8000</td>
     	</tr>

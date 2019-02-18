@@ -45,8 +45,8 @@
         <module>rweb-oauth</module>
         <module>rweb-web</module>
         <module>rweb-client</module>
-        <module>rweb-erueka-service</module>
-        <module>rweb-erueka-discovery</module>
+        <module>rweb-eureka-service</module>
+        <module>rweb-eureka-discovery</module>
         <module>rweb-config-service</module>
         <module>rweb-solr</module>
         <module>rweb-backend</module>
